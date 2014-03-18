@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "net.fizfaz.esblighting"
+        version   = "0.9.0"
+		versionCode = "10">
+
+    <name>ESB Lighting</name>
+
+    <description>
+        Provides a schedule of the upcoming (and past) Empire State Building lightings.<br />
+		The information is pulled from the official <a href="http://esbnyc.com/current_events_tower_lights.asp">ESB website</a> and provided as an extra service. This app consumes that service and displays the results.<br /><br />
+		Per default all available future data plus available past data (up to the last month's first day) is shown. You can load all available data on request(ESB provides a one year's history).<br /><br />
+		
+		This is not an official ESB app!
+    </description>
+
+    <author email="apps@fizfaz.net">
+        Michael Niessl
+    </author>
+
+
+    <preference name="permissions"                value="none"/>
+
+    <preference name="phonegap-version"           value="3.1.0" />
+    <preference name="orientation"                value="default" />
+    <preference name="target-device"              value="universal" />
+    <preference name="fullscreen"                 value="false" />
+    
+    
+    <icon src="res/new_icon.png" />
+    <icon src="res/icon/android/android_icon_36_ldpi.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="res/icon/android/android_icon_48_mdpi.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="res/icon/android/android_icon_72_hdpi.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="res/icon/android/android_icon_96_xdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+
+    <icon src="res/icon/ios/ios_icon_57.png"            gap:platform="ios"        width="57" height="57" />
+    <icon src="res/icon/ios/ios_icon_72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="res/icon/ios/ios_icon_114.png"         gap:platform="ios"        width="114" height="114" />
+    <icon src="res/icon/ios/ios_icon_144.png"         gap:platform="ios"        width="144" height="144" />
+
+    <icon src="res/icon/winphone/winphone_icon-48.png"  gap:platform="winphone" />
+    <icon src="res/icon/winphone/winphone_icon-173.png" gap:platform="winphone"   gap:role="background" />
+
+    <!-- Define app splash screen for each platform. -->
+    <gap:splash src="res/splash/android/android_splash_ldpi.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="res/splash/android/android_splash_mdpi.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="res/splash/android/android_splash_hdpi.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="res/splash/android/android_splash_xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="res/splash/ios/ios_splash_portrait.png"    gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="res/splash/ios/ios_splash_portrait_2x.png" gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="res/splash/ios/ios_splash_portrait_landscape.png"      gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="res/splash/ios/ios_splash_portrait_landscape_2x.png"     gap:platform="ios"     width="1024" height="768" />
+    <gap:splash src="res/screen/winphone/winphone_splash.png" gap:platform="winphone" />
+
+    
+    <access origin="*"/> <!-- allow local pages -->
+    
+</widget>

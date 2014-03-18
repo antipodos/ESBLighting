@@ -1,0 +1,10 @@
+
+body > section {
+	display:block;
+}
+
+body > section > article{visibility:visible;display:block}
+
+#icon-right {
+	padding-right:20px;
+}
