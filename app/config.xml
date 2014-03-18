@@ -1,36 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
 
-<widget xmlns     = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "net.fizfaz.esblighting"
-        version   = "0.9.0"
-		versionCode = "10">
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.example"
+        version     = "1.0.0"
+        versionCode = "10" >
 
-    <name>ESB Lighting</name>
+        <!-- versionCode is optional and Android only -->
 
-    <description>
-        Provides a schedule of the upcoming (and past) Empire State Building lightings.<br />
-		The information is pulled from the official <a href="http://esbnyc.com/current_events_tower_lights.asp">ESB website</a> and provided as an extra service. This app consumes that service and displays the results.<br /><br />
-		Per default all available future data plus available past data (up to the last month's first day) is shown. You can load all available data on request(ESB provides a one year's history).<br /><br />
-		
-		This is not an official ESB app!
-    </description>
+        <preference name="phonegap-version" value="3.1.0" />
 
-    <author email="apps@fizfaz.net">
-        Michael Niessl
-    </author>
+        <name>Sample Config.xml</name>
 
+        <description>
+        An example for phonegap build docs. 
+        </description>
 
-    <preference name="permissions"                value="none"/>
+        <author href="http://yoursite.com" email="you@youremail.com">
+        Your Name
+        </author>
 
-    <preference name="phonegap-version"           value="3.1.0" />
-    <preference name="orientation"                value="default" />
-    <preference name="target-device"              value="universal" />
-    <preference name="fullscreen"                 value="false" />
-    
-
-
-    
-    <access origin="*"/> <!-- allow local pages -->
-    
-</widget>
+    </widget>
