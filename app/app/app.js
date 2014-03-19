@@ -1,12 +1,13 @@
 $url = "http://fizfaz.net/ifttt/esblighting.php";
 
 var lastSelectedItem = "";
+var keepShort = keepShort();
 
 var pull = new Lungo.Element.Pull('#mainArticle', {
-    onPull: "Pull down to refresh",      //Text on pulling
-    onRelease: "Release to get new data",//Text on releasing
-    onRefresh: "Refreshing...",          //Text on refreshing
-    callback: function() {               //Action on refresh
+    onPull: "Pull down to refresh",
+    onRelease: "Release to get new data",
+    onRefresh: "Refreshing...",
+    callback: function() {
         pull.hide();
 		clearList();
 		loadJsonList(keepShort);
@@ -46,16 +47,17 @@ function loadJsonItem(myDate, selector) {
 
 		$$(selector).append(d + "<div class=\"text bold\">" + data.color +"</div><span class=\"text tiny\">" + data.occasion + "<\span>");
 		
-		$$("#twittershare" + selector.slice(1)).append(renderTweetMe(d, data.color));
+		$$("#twittershare" + selector.slice(1)).append(renderShareMe(d, data.color));
 	});
 }
 
-function renderTweetMe(myDate, myColor) {
+function renderShareMe(myDate, myColor) {
 	if (myColor.length > 24) {
 		myColor = myColor.slice(0, 20) + "...";
 	}
 	text = "There%20is%20an%20interesting%20color%20combination%20coming%20up%20on " + d + ".%20Color:%20" + myColor + ".%20http://bit.ly/1fWxQ25";
-	return "<a href=\"https://twitter.com/intent/tweet?hashtags=ESBLighting&text=" + text + "\" target=\"_blank\" class=\"button theme\" data-label=\"Tweet me\" data-icon=\"twitter\">Tweet Me</a>";
+
+	return "<a href=\"#\" onClick=\"javascript:window.plugins.socialsharing.share('" + text + "')\" class=\"button theme\" data-label=\"Share Me\" data-icon=\"twitter\">Share Me</a>";
 }
 
 function onItemClick(date) {
@@ -92,17 +94,29 @@ function _GET(id){
 	} 
 	return decodeURIComponent(a.exec(window.location.search)[1]);
 }
-
+	
+Lungo.init({
+	name: 'ESB Lighting',
+	version: '0.9.0',
+	resources: [
+		'app/menu.html',
+		'app/single.html'],
+	history: false
+});
+			
 Lungo.Events.init({
-    'load section#pull': function(event) {
-        App.pull = new Lungo.Element.Pull('section#pull article', {
-            onPull: "Pull down to refresh",
-            onRelease: "Release to get new data",
-            onRefresh: "Refreshing...",
-            callback: function() {
-                alert("Pull & Refresh completed!");
-                App.pull.hide();
-				}
-			});
-		}
-	});
+	'load article#aboutArticle'     : function(event) {
+		document.getElementById("sectionTitle").innerHTML = "About...";
+	},
+	'load article#mainArticle'     : function(event) {
+		document.getElementById("sectionTitle").innerHTML = "ESB Lighting Schedule";
+	},
+	'load article#todayArticle'     : function(event) {
+		document.getElementById("sectionTitle").innerHTML = "Today's lighting";
+		loadJsonItem(new Date().toDateString(), "#todayInfo");
+	},
+	'load section#singleItemSection' : function(event) {
+		document.getElementById("singleTitle").innerHTML = lastSelectedItem;
+		loadJsonItem(lastSelectedItem, "#singleInfo");
+	}
+});

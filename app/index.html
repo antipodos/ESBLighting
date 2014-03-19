@@ -24,11 +24,11 @@
             <nav>
                 <a href="#" data-view-aside="menu" data-icon="menu"></a>
             </nav>
-			<nav class="centered title">ESB Lighting Schedule</nav>
+			<nav class="centered title" id="sectionTitle">ESB Lighting Schedule</nav>
 			<nav class="on-right"><img src="res/icon.png" height="40px" id="icon-right"/></nav>
         </header>
 
-        <article id="mainArticle" class="list indenteds scroll">
+        <article id="mainArticle" class="list scroll">
 			<ul>
                 <li class="text small">
                     The following list shows all the upcoming lightings on the Empire State Building.
@@ -43,28 +43,7 @@
 		<script src="components/lungo/lungo.js"></script>
 		<script src="app/app.js"></script>
 		<script>
-			var keepShort = keepShort();
-
-			Lungo.init({
-				name: 'ESB Lighting',
-				version: '0.9.0',
-				resources: [
-					'app/menu.html',
-					'app/about.html',
-					'app/today.html',
-					'app/single.html'],
-				history: false
-			});
-			
 			loadJsonList(keepShort);
-			
-			Lungo.dom('#todaySection').on('load', function(event){
-				loadJsonItem(new Date().toDateString(), "#todayInfo");
-			});
-			Lungo.dom('#singleItemSection').on('load', function(event){
-				document.getElementById("singleTitle").innerHTML = lastSelectedItem;
-				loadJsonItem(lastSelectedItem, "#singleInfo");
-			});
 		</script>
     </section>
 </body>
