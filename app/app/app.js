@@ -57,7 +57,7 @@ function renderShareMe(myDate, myColor) {
 	}
 	text = "There is an interesting color combination coming up on " + d + ". Color: " + myColor + ". http://bit.ly/1fWxQ25";
 
-	return "<button onClick=\"window.plugins.socialsharing.share('" + text + "')\">Share Me</button>";
+	return "<button onClick=\"window.plugins.socialsharing.share('" + text + "')\">Share</button>";
 }
 
 function onItemClick(date) {
