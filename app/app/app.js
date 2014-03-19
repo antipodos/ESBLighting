@@ -55,9 +55,9 @@ function renderShareMe(myDate, myColor) {
 	if (myColor.length > 24) {
 		myColor = myColor.slice(0, 20) + "...";
 	}
-	text = "There%20is%20an%20interesting%20color%20combination%20coming%20up%20on " + d + ".%20Color:%20" + myColor + ".%20http://bit.ly/1fWxQ25";
+	text = "There is an interesting color combination coming up on " + d + ". Color: " + myColor + ". http://bit.ly/1fWxQ25";
 
-	return "<a href=\"#\" onClick=\"javascript:window.plugins.socialsharing.share('" + text + "')\" class=\"button theme\" data-label=\"Share Me\" data-icon=\"twitter\">Share Me</a>";
+	return "<button onClick=\"window.plugins.socialsharing.share('" + text + "')\">Share Me</button>";
 }
 
 function onItemClick(date) {
