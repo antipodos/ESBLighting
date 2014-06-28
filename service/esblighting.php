@@ -5,7 +5,7 @@
 	include_once('feedwriter/FeedTypes.php');
 		
 	$dateFormat = "m/d/Y 15:00:00";
-	$url = "http://www.esbnyc.com/current_events_tower_lights.asp";
+	$url = "http://www.esbnyc.com/explore/tower-lights/calendar";
 	$entries;
 		
 	
@@ -16,7 +16,7 @@
 		$entry = getItem(strtotime("now +6h"), $entries);
 		
 		echo "<br /><br /><b>ESB Lighting Feed</b><br />";
-		echo "<a href=\"esblighting.php\">This service</a> analyzes the lighting schedule from the <a href=\"http://www.esbnyc.com/current_events_tower_lights.asp\">Empire State Building Website</a>.<br />";
+		echo "<a href=\"esblighting.php\">This service</a> analyzes the lighting schedule from the <a href=\"http://www.esbnyc.com/\">Empire State Building Website</a>.<br />";
 		echo "It uses the parsed information to build an Atom feed free to being consumed by other services.";
 		echo "<br /><br />";
 		
@@ -64,33 +64,29 @@
 		global $dateFormat;
 
 		$html = file_get_html($url);
-		foreach($html->find('tr') as $row) {
-			$tempyear = trim($row->find('td[class="rowYear"]', 0)->plaintext);
-			if ($tempyear != "") {
-				$year = $tempyear;
+		foreach($html->find('li[class^="views-row"]') as $row) {
+		
+			$date = trim($row->find('p[class="calendar-date"]', 0)->plaintext);
+			if ($date == "") {
+				$date = trim($row->find('p[class="lighting-date"]', 0)->plaintext);
 			}
-			$date = trim($row->find('td[style="width:110px;"]', 0)->plaintext);
-			$color = trim($row->find('td[style="width:350px;"]', 0)->plaintext);
-			$occasion = trim($row->children(2)->plaintext);
+			$color = trim($row->find('p[class="lighting-desc"]', 0)->plaintext);
+			$occasion = "";
+			
+			$inhonor = strpos($color, "in honor");
+			$incelebration = strpos($color, "in celebration");
+				
+			if ($inhonor > 0) {
+				$occasion = substr($color, $inhonor);
+				$color = substr($color, 0, $inhonor - 1);
+			} else if ($incelebration > 0) {
+				$occasion = substr($color, $inhonor);
+				$color = substr($color, 0, $incelebration - 1);
+			}
 			
 			if ($date != "" && $color != "") {
-				$parts = explode("-", $date);
-				$date_from = parseDate($parts[0] . ", " . $year);
-				if (isset($parts[1])) {
-					$subparts = explode(" ", trim($parts[1]));
-					$subparts_from = explode(" ", trim($parts[0]));
-					if (count($subparts) == 1) {					
-						$parts[1] = $subparts_from[0] . " " . $parts[1];
-					}
-					$date_to = parseDate($parts[1] . ", " . $year);
-					do {
-						$entries[] = array("date" => $date_to, "color" => $color, "occasion" => $occasion);
-						$date_to = date($dateFormat, strtotime("-1 day", strtotime($date_to)));
-					} while (strtotime($date_to) >= strtotime($date_from));
-					
-				} else {
-					$entries[] = array("date" => $date_from, "color" => $color, "occasion" => $occasion);
-				}		
+				$date = parseDate($date);
+				$entries[] = array("date" => $date, "color" => $color, "occasion" => $occasion);	
 			}
 		}
 		
@@ -109,6 +105,8 @@
 				return $entry;
 			}
 		}
+		
+		return array("date" => date("m/d/Y", $time), "color" => "White / White / White", "occasion" => "");
 	}
 	
 	function addItemToFeed(&$feed, $date, $color, $occasion) {
