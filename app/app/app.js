@@ -1,4 +1,4 @@
-$url = "http://fizfaz.net/ifttt/esblighting.php";
+$url = "http://esblighting.org/service/";
 
 var lastSelectedItem = "";
 var keepShort = keepShort();
@@ -66,7 +66,9 @@ function onItemClick(date) {
 
 function keepShort() {
 	if (_GET("keepShort") == "") {
-		return true;
+		//return true;
+		//default: load all for now
+		return false;
 	}
 	return false;
 }

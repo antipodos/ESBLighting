@@ -80,7 +80,7 @@
 				$occasion = substr($color, $inhonor);
 				$color = substr($color, 0, $inhonor - 1);
 			} else if ($incelebration > 0) {
-				$occasion = substr($color, $inhonor);
+				$occasion = substr($color, $incelebration);
 				$color = substr($color, 0, $incelebration - 1);
 			}
 			
@@ -92,6 +92,8 @@
 		
 		$html->clear();
 		unset($html);
+		
+		array_multisort($entries, SORT_DESC);
 	}
 	
 	function parseDate($date) {
