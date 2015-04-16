@@ -6,7 +6,7 @@ class ScheduleItem {
     public $color;
     public $occasion;
     
-    private $keywords = ["in honor", "in celebration"];
+    private $keywords = array("in honor", "in celebration");
     
     public function ScheduleItem($date, $description, $occasion = null) {
         $this->date = $date;
@@ -47,7 +47,7 @@ class ScheduleItem {
         
         $newItem->setTitle($title . " - " . date("m/d/Y", strtotime($this->date)));
         $newItem->setLink("http://fizfaz.net/ifttt/" . date("m/d/Y", strtotime($this->date)) . "/");
-        $newItem->setDate($date);
+        $newItem->setDate($this->date);
         $newItem->setAuthor("Michael Niessl");
         $newItem->setDescription($desc);
         $feed->addItem($newItem);
