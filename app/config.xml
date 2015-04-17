@@ -1,2 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>	<widget xmlns = "http://www.w3.org/ns/widgets"		xmlns:gap = "http://phonegap.com/ns/1.0"		id        = "net.fizfaz.esblighting"		versionCode="95"		version   = "0.9.5">		<name>ESB Lighting</name>		<description>			Provides a schedule of the upcoming (and past) Empire State Building lightings.
-		</description>		<author href="fizfaz.net" email="apps@fizfaz.net">			Michael Niessl		</author>				<preference name="phonegap-version" value="3.3.0" />		<preference name="orientation" value="default" />		<preference name="fullscreen" value="false" />		<preference name="target-device" value="universal" />				<gap:plugin name="nl.x-services.plugins.socialsharing"  version="4.0.1" />				<preference name="permissions" value="none"/>				<access origin="*" />				<gap:platform name="ios" />		<gap:platform name="android" />		<gap:platform name="winphone" />				<icon src="res/appicon.png" />		<icon src="res/icon/ios/ios_icon_57.png" gap:platform="ios" width="57" height="57" />		<icon src="res/icon/ios/ios_icon_72.png" gap:platform="ios" width="72" height="72" />		<icon src="res/icon/ios/ios_icon_114.png" gap:platform="ios" width="114" height="114" />		<icon src="res/icon/ios/ios_icon_144.png" gap:platform="ios" width="144" height="144" />		<icon src="res/icon/ios/ios_icon_114.png" gap:platform="ios" width="76" height="76" />		<icon src="res/icon/ios/ios_icon_144.png" gap:platform="ios" width="120" height="120" />		<icon src="res/icon/ios/ios_icon_144.png" gap:platform="ios" width="152" height="152" />		<icon src="res/icon/android/android_icon_36_ldpi.png" gap:platform="android" gap:density="ldpi" />		<icon src="res/icon/android/android_icon_48_mdpi.png" gap:platform="android" gap:density="mdpi" />		<icon src="res/icon/android/android_icon_72_hdpi.png" gap:platform="android" gap:density="hdpi" />		<icon src="res/icon/android/android_icon_96_xdpi.png" gap:platform="android" gap:density="xhdpi" />		<icon src="res/icon/android/android_icon_96_xdpi.png" gap:platform="android" gap:density="xxhdpi" />		<gap:splash src="res/splash/ios/ios_splash_portrait.png" gap:platform="ios" width="320" height="480" />		<gap:splash src="res/splash/ios/ios_splash_portrait_landscape.png" gap:platform="ios" width="480" height="320" />		<gap:splash src="res/splash/ios/ios_splash_portrait_2x.png" gap:platform="ios" width="640" height="960" />		<gap:splash src="res/splash/ios/ios_splash_portrait_landscape_2x.png" gap:platform="ios" width="960" height="640" />		<gap:splash src="res/splash/ios/ios_splash_portrait_2x.png" gap:platform="ios" width="640" height="1136" />		<gap:splash src="res/splash/ios/ios_splash_portrait_landscape_2x.png" gap:platform="ios" width="1136" height="640" />		<gap:splash src="res/splash/ios/ios_splash_portrait_2x.png" gap:platform="ios" width="768" height="1024 " />		<gap:splash src="res/splash/ios/ios_splash_portrait_landscape_2x.png" gap:platform="ios" width="1024" height="768" />		<gap:splash src="res/splash/ios/ios_splash_portrait_2x.png" gap:platform="ios" width="1536" height="2008" />		<gap:splash src="res/splash/ios/ios_splash_portrait_landscape_2x.png" gap:platform="ios" width="2048" height="1536" />		<gap:splash src="res/splash/android/android_splash_ldpi.png" gap:platform="android" gap:density="ldpi" />		<gap:splash src="res/splash/android/android_splash_mdpi.png" gap:platform="android" gap:density="mdpi" />		<gap:splash src="res/splash/android/android_splash_hdpi.png" gap:platform="android" gap:density="hdpi" />		<gap:splash src="res/splash/android/android_splash_xhdpi.png" gap:platform="android" gap:density="xhdpi" />		<gap:splash src="res/splash/winphone/winphone_splash.png" gap:platform="winphone" />			</widget>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="com.ionicframework.esblighting926575" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>esblighting</name>
+  <description>
+        An Ionic Framework and Cordova project.
+    </description>
+  <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
+    </author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <preference name="SplashScreen" value="screen"/>
+  <preference name="SplashScreenDelay" value="3000"/>
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+  <platform name="android">
+    <icon src="resources\android\icon\drawable-ldpi-icon.png" density="ldpi"/>
+    <icon src="resources\android\icon\drawable-mdpi-icon.png" density="mdpi"/>
+    <icon src="resources\android\icon\drawable-hdpi-icon.png" density="hdpi"/>
+    <icon src="resources\android\icon\drawable-xhdpi-icon.png" density="xhdpi"/>
+    <icon src="resources\android\icon\drawable-xxhdpi-icon.png" density="xxhdpi"/>
+    <icon src="resources\android\icon\drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <splash src="resources\android\splash\drawable-land-ldpi-screen.png" density="land-ldpi"/>
+    <splash src="resources\android\splash\drawable-land-mdpi-screen.png" density="land-mdpi"/>
+    <splash src="resources\android\splash\drawable-land-hdpi-screen.png" density="land-hdpi"/>
+    <splash src="resources\android\splash\drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
+    <splash src="resources\android\splash\drawable-land-xxhdpi-screen.png" density="land-xxhdpi"/>
+    <splash src="resources\android\splash\drawable-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>
+    <splash src="resources\android\splash\drawable-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="resources\android\splash\drawable-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="resources\android\splash\drawable-port-hdpi-screen.png" density="port-hdpi"/>
+    <splash src="resources\android\splash\drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <splash src="resources\android\splash\drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="resources\android\splash\drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+  </platform>
+  <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+</widget>

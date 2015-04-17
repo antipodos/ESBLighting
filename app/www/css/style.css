@@ -1,0 +1,20 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.bar.bar-stable {
+	background-color: #00afe3; !important;
+}
+
+.bar.bar-stable .title {
+	color: #fff; !important;
+}
+
+.tab-nav.tabs {
+	background-color: #00afe3; !important;
+}
+
+.tab-item span,
+.tab-item i {
+	color: #fff; !important;
+}
