@@ -32,7 +32,7 @@ class Schedule {
             $selectedItems = array();
             foreach ($this->items as $item) {
                 if (strtotime($item->date) >= $startingFrom) {
-                    $selectedItems[] =  $this->encodeReturn($item, $format);
+                    $selectedItems[] =  $item;
                 }
             }
             return $this->encodeReturn($selectedItems, $format);
