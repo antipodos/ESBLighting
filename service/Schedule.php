@@ -25,8 +25,18 @@ class Schedule {
         return $this->encodeReturn(new ScheduleItem(date("m/d/Y", $time), "White / White / White", ""), $format);
     }
     
-    public function getItems($format = "plain") {
-        return $this->encodeReturn($this->items, $format);
+    public function getItems($format = "plain", $startingFrom = null) {
+        if ($startingFrom == null) {
+            return $this->encodeReturn($this->items, $format);
+        } else {
+            $selectedItems = array();
+            foreach ($this->items as $item) {
+                if (strtotime($item->date) >= $startingFrom) {
+                    $selectedItems[] =  $this->encodeReturn($item, $format);
+                }
+            }
+            return $this->encodeReturn($selectedItems, $format);
+        }
     }
     
     private function encodeReturn($return, $format) {
