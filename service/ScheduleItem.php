@@ -2,7 +2,8 @@
 
 class ScheduleItem {
     
-    public $date;    
+    public $date;
+    public $formattedDate;
     public $color;
     public $occasion;
     
@@ -10,7 +11,8 @@ class ScheduleItem {
     
     public function ScheduleItem($date, $description, $occasion = null) {
         $this->date = $date;
-        
+        $this->formattedDate = date("Y-m-d", strtotime($date));
+
         if ($occasion == null) {
             $this->parseDescription($description);
         } else {
