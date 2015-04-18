@@ -50,6 +50,6 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
-  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-  <spash src="resources/android/splash/drawable-land-xhdpi-screen.png"/>
+  <icon src="icon.png" />
+  <splash src="splash.png" />
 </widget>
