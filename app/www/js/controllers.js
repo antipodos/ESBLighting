@@ -1,7 +1,6 @@
 angular.module('esblighting.controllers', [])
 
-.controller('TodayCtrl', function($scope, esblightingSchedule) {
-    $scope.esblightingSchedule = [];
+.controller('TodayCtrl', function($scope, esblightingSchedule, $state) {
     $scope.doRefresh = function() {
         refreshItems();
         $scope.$broadcast('scroll.refreshComplete');
@@ -17,6 +16,7 @@ angular.module('esblighting.controllers', [])
             }
         );
     };
+
     refreshItems();
 })
 
@@ -60,11 +60,11 @@ angular.module('esblighting.controllers', [])
     refreshItems();
 })
 
-.controller('AboutPopover', function($scope, $ionicPopover) {
-    var template = '<ion-popover-view><ion-header-bar> <h1 class="title">About</h1></ion-header-bar> <ion-content><div class="padding"><p>ESB Lighting provides a schedule of the upcoming (and past) Empire State Building lightings.</p><p><a href="http://esblighting.org">esblighting.org</a> pulls the schedule from the ESB\'s official website and provides a service consumed by this app.</p><p>For email alerts head over to <a href="https://ifttt.com/recipes/149276-if-the-empire-state-building-is-coming-up-with-an-interesting-color-combination-email-me">IFTTT</a>.</p><p>Michael<br />info@esblighting.org<br /><a href="http://esblighting.org">esblighting.org</a></p></div></ion-content></ion-popover-view>';
-    
-    $scope.popover = $ionicPopover.fromTemplate(template, {
+.controller('AboutPopover', function($scope, $ionicPopover) {   
+    $scope.popover = $ionicPopover.fromTemplateUrl('templates/about.html', {
         scope: $scope
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
     
     $scope.openPopover = function($event) {
@@ -77,3 +77,29 @@ angular.module('esblighting.controllers', [])
         $scope.popover.remove();
     });
 })
+
+.controller('ESBDetailCtrl', function($scope, $stateParams, esblightingSchedule) {
+    function refreshItems(){
+        esblightingSchedule.get($stateParams.date).then(function(data){
+                $scope.item = data;
+            },
+            function(errorMessage){
+                $scope.error = errorMessage;
+            }
+        );
+    };
+    refreshItems();
+})
+
+.controller('ShareCtrl', function($scope, $cordovaSocialSharing) {
+    $scope.share = function (item) {
+        if (!window.cordova) {
+            // twitter link
+            window.open("https://twitter.com/intent/tweet?text=The%20Empire%20State%20Building%20is%20coming%20up%20with%20an%20interesting%20lighting%20on%20" + item.date + ".%20Get%20the%20details%20at%20http://esblighting.org.");
+        } else {
+            // sharing plugin
+            $cordovaSocialSharing.share('The Empire State Building is coming up with an interesting lighting on ' + item.date + '. Get the details at http://esblighting.org', 'Interesting Empire State Building lighting', null, 'http://esblighting.org');
+        }
+    }
+})
+

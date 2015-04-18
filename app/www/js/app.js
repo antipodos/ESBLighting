@@ -1,16 +1,9 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('esblighting', ['ionic', 'esblighting.controllers', 'esblighting.services'])
+angular.module('esblighting', ['ionic', 'ngCordova', 'esblighting.controllers', 'esblighting.services'])
 
 .directive('ebslightingCard', function() {
     return {
         restrict: 'E',
-        template: '<div class="item item-divider">{{item.formattedDate | date:\'EEE, MMM d, yyyy\'}}</script></div><div class="item item-text-wrap"><p>{{item.color}}</p><p>{{item.occasion}}</p></div>',
+        templateUrl: 'templates/list-item.html',
     }
 })
 
@@ -66,7 +59,7 @@ angular.module('esblighting', ['ionic', 'esblighting.controllers', 'esblighting.
         controller: 'AllCtrl'
       }
     }
-  });
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/today');

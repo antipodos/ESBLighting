@@ -18,3 +18,10 @@ body {
 .tab-item i {
 	color: #fff; !important;
 }
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+    color: #00afe3;
+}

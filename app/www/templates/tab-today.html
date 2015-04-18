@@ -1,11 +1,14 @@
-<ion-view view-title="ESB LIGHTING - TODAY">
+<ion-view view-title="TODAY">
     <ion-content class="padding">
         <ion-refresher
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">
         </ion-refresher>
-        <div class="card">
-            <ebslighting-card></ebslighting-card>
-        </div>
+        <ion-list>
+            <ion-item class="item item-icon-right" class="item item-icon-right" ng-controller="ShareCtrl">
+                <ebslighting-card></ebslighting-card>
+                <a ng-click="share(item)"><i class="icon ion-android-share"></i></a>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

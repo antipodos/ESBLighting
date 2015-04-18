@@ -1,11 +1,14 @@
-<ion-view view-title="ESB LIGHTING - UPCOMING">
+<ion-view view-title="UPCOMING">
     <ion-content class="padding">
         <ion-refresher
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">
         </ion-refresher>
-        <div class="card" ng-repeat="item in esblightingSchedule">
-            <ebslighting-card></ebslighting-card>
-        </div>
+        <ion-list>
+            <ion-item ng-repeat="item in esblightingSchedule" class="item item-icon-right">
+                <ebslighting-card></ebslighting-card>
+                <a href="#"><i class="icon ion-android-share"></i></a>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

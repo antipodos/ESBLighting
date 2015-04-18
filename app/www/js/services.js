@@ -17,10 +17,13 @@ angular.module('esblighting.services', [])
             return this.getItems(this.apiPath + "s=all");
         },
         getUpcomingItems: function() {
-            return this.getItems(this.apiPath + "s=upcoming");
+            return this.getItems(this.apiPath + "s=upcoming&sort=asc");
         },
         getToday: function() {
             return this.getItems(this.apiPath + "s=today");
+        },
+        get: function(specificDate) {
+            return this.getItems(this.apiPath + "s=" + specificDate);
         }
     };
 });

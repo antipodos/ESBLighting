@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.esblighting926575" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>esblighting</name>
+<widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "net.fizfaz.esblighting"´versionCode="110" version = "1.1.0">
+  <name>ESB Lighting</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Provides a schedule of the upcoming (and past) Empire State Building lightings.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+  <author href="fizfaz.net" email="apps@fizfaz.net">
+		Michael Niessl
+	</author>
+	
+	<preference name="phonegap-version" value="3.7.0" />
+	<preference name="orientation" value="default" />
+	<preference name="fullscreen" value="false" />
+	<preference name="target-device" value="universal" />
+	<preference name="permissions" value="none"/>
+	
+	<preference name="webviewbounce" value="false"/>
+	<preference name="UIWebViewBounce" value="false"/>
+	<preference name="DisallowOverscroll" value="true"/>
+	<preference name="BackupWebStorage" value="none"/>
+	<preference name="SplashScreen" value="screen"/>
+	<preference name="SplashScreenDelay" value="3000"/>
+	
+	<gap:platform name="android" />
+	
   <content src="index.html"/>
   <access origin="*"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="3000"/>
+
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
