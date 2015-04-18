@@ -4,7 +4,7 @@ include_once('feedwriter/FeedTypes.php');
 
 class Schedule {
     
-    private $items;
+    private $items;    
     
     public function Schedule() {
         $this->items = array();
@@ -47,10 +47,14 @@ class Schedule {
         }
     }
     
-    public function sort() {
+    public function sort($sort = SORT_DESC) {
         usort($this->items, function($a, $b) {
             return strtotime($b->date) - strtotime($a->date);
         });
+        
+        if ($sort == SORT_ASC) {
+            $this->items = array_reverse($this->items);
+        }
     }
     
     public function getScheduleAsFeedForIfttt() {

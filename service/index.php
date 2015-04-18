@@ -6,7 +6,12 @@
     $parser = new HtmlParser("http://www.esbnyc.com/explore/tower-lights/calendar");
     $parser->parse();
     $schedule = $parser->getSchedule();
-    $schedule->sort();
+    
+    if (isset($_GET['sort']) && $_GET['sort'] == 'asc') {
+        $schedule->sort(SORT_ASC);
+    } else {
+        $schedule->sort(SORT_DESC);
+    }
 
     if (isset($_GET['s']) && $_GET['s'] == "tonight") {
         // get a specific entry for tonight
