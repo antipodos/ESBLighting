@@ -22,6 +22,7 @@
 	<preference name="SplashScreenDelay" value="3000"/>
 	
 	<gap:platform name="android" />
+        <gap:plugin name="nl.x-services.plugins.socialsharing"  version="4.3.8" />
 	
   <content src="index.html"/>
   <access origin="*"/>
