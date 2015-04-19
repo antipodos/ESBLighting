@@ -16,8 +16,6 @@
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
-  <preference name="SplashScreen" value="splash"/>
-  <preference name="SplashScreenDelay" value="3000"/>
   <gap:platform name="android"/>
   <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8"/>
   <content src="index.html"/>
@@ -34,6 +32,4 @@
     <icon src="resources\android\icon\drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
   </platform>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
-  <splash src="splash.png"/>
-  <gap:splash src="splash.png"/>
 </widget>
