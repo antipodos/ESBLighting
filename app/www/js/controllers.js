@@ -95,10 +95,10 @@ angular.module('esblighting.controllers', [])
     $scope.share = function (item) {
         if (!window.cordova) {
             // twitter link
-            window.open("https://twitter.com/intent/tweet?text=The%20Empire%20State%20Building%20is%20coming%20up%20with%20an%20interesting%20lighting%20on%20" + item.date + ".%20Get%20the%20details%20at%20http://esblighting.org.");
+            window.open("https://twitter.com/intent/tweet?text=The%20Empire%20State%20Building%20is%20coming%20up%20with%20an%20interesting%20lighting%20on%20" + item.formattedDate + ".%20Get%20the%20details%20at%20http://esblighting.org");
         } else {
             // sharing plugin
-            $cordovaSocialSharing.share('The Empire State Building is coming up with an interesting lighting on ' + item.date + '. Get the details at http://esblighting.org', 'Interesting Empire State Building lighting', null, 'http://esblighting.org');
+            $cordovaSocialSharing.share('The Empire State Building is coming up with an interesting lighting on ' + item.formattedDate, 'Interesting Empire State Building lighting', 'og_image.png', 'http://esblighting.org');
         }
     }
 })
