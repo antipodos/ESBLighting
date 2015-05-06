@@ -7,6 +7,8 @@ class ScheduleItem {
     public $color;
     public $occasion;
     
+    public $parsedColors;
+    
     private $keywords = array("in honor", "in celebration");
     
     public function ScheduleItem($date, $description, $occasion = null) {
@@ -53,5 +55,27 @@ class ScheduleItem {
         $newItem->setAuthor("Michael Niessl");
         $newItem->setDescription($desc);
         $feed->addItem($newItem);
+    }
+    
+    public function parseColors($colors) {
+        foreach (explode(' ',$this->color) as $word) {
+            $word = trim(strtolower($word));
+            $word = str_replace(",", "", $word);
+            if (in_array($word, $colors)) {
+                $this->parsedColors[] = $word;
+            }
+        }
+    }
+    
+    public function getColorsForIFTTT() {
+        if (count($this->parsedColors) < 1) {
+            return array('white', 'white', 'white');
+        } elseif (count($this->parsedColors) == 1) {
+            return array($this->parsedColors[0], $this->parsedColors[0], $this->parsedColors[0]);
+        } elseif (count($this->parsedColors) == 2) {
+            return array($this->parsedColors[0], $this->parsedColors[1], 'white');
+        } else {
+            return array_slice($this->parsedColors, 0, 3);
+        }
     }
 }

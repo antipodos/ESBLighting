@@ -25,6 +25,10 @@ class Schedule {
         return $this->encodeReturn(new ScheduleItem(date("m/d/Y", $time), "White / White / White", ""), $format);
     }
     
+    public function getItemsRaw() {
+        return $this->items;
+    }
+    
     public function getItems($format = "plain", $startingFrom = null) {
         if ($startingFrom == null) {
             return $this->encodeReturn($this->items, $format);
