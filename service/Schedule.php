@@ -74,4 +74,22 @@ class Schedule {
         }		
 	$ESBFeed->generateFeed();
     }
+    
+    public function getScheduleAsTieredColorFeedForIfttt() {
+        $ESBFeed = new ATOMFeedWriter();
+        
+        $colors = file('colors.txt');
+        $colors = array_map('trim', $colors);
+        
+        $ESBFeed->setTitle('ESBLighting - Tiered Colors');
+        $ESBFeed->setLink('http://esblighting.org/service/?o=atom-hue');
+        $ESBFeed->setChannelElement('updated', date(DATE_ATOM , time()));
+        $ESBFeed->setChannelElement('author', array('name'=>'Michael Niessl'));
+        foreach ($this->items as $item) {
+            if (strtotime($item->date) <= strtotime("now")) {
+                $item->getItemAsTieredColorFeedItem($ESBFeed, $colors);
+            }
+        }		
+	$ESBFeed->generateFeed();
+    }
 }

@@ -51,16 +51,8 @@
             $output = $schedule->getItems("json");
         }
         echo $output;
-    } elseif (isset($_GET['o']) && $_GET['o'] == "hue") {
-        $colors = file('colors.txt');
-        $colors = array_map('trim', $colors);
-        echo '<table style="border: 1px solid black;"><tr><th>date</th><th>color</th><th>parsed color</th></tr>';
-        foreach ($schedule->getItemsRaw() as $item) {
-            $item->parseColors($colors);
-            $parsedColors = $item->getColorsForIFTTT();
-            echo '<tr style="border-bottom: 1px solid black;"><td>' . $item->formattedDate . '</td><td>' . $item->color . '</td><td>1. ' . $parsedColors[0] . '<br />2. ' . $parsedColors[1] . '<br />3. ' . $parsedColors[2] . '</td></tr>' ;
-        }
-        echo '</table>';
+    } elseif (isset($_GET['o']) && $_GET['o'] == "atom-hue") {
+        $schedule->getScheduleAsTieredColorFeedForIfttt();
     } else {
         $schedule->getScheduleAsFeedForIfttt();
     }

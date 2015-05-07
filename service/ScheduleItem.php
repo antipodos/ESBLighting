@@ -57,6 +57,20 @@ class ScheduleItem {
         $feed->addItem($newItem);
     }
     
+    function getItemAsTieredColorFeedItem($feed, $colors) {
+        $this->parseColors($colors);
+        $parsedColors = $this->getColorsForIFTTT();
+        
+        $newItem = $feed->createNewItem();
+        $newItem->setDate($this->date);
+        $newItem->setLink("http://esblighting.org/service/?s=" . date("m/d/Y", strtotime($this->date)) . "/");
+        $newItem->setAuthor($parsedColors[0]); // ifttt author
+        $newItem->setDescription($parsedColors[1]); // ifttt content
+        $newItem->setTitle($parsedColors[2]); // ifttt title
+        
+        $feed->addItem($newItem);
+    }
+    
     public function parseColors($colors) {
         foreach (explode(' ',$this->color) as $word) {
             $word = trim(strtolower($word));
